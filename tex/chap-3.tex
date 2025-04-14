@@ -1,0 +1,52 @@
+%-------------------------------------------------
+% FileName: chapt-3.tex
+% Version: 0.1
+% Date: 2023-06-25
+% Description: 第3章
+% Others: 
+% History: origin
+%------------------------------------------------- 
+
+% 断页
+% \clearpage 
+
+\chapter{系统分析(需求分析)}
+
+\section{功能需求分析}
+% 引用图片的例子
+描述系统的功能性需求，可以通过数据流图或UML的用例图等图表工具来部来定义系统的功能需求，并把需求和设计完全分离开。如图\ref{fig:single}所示。
+
+% xelatex 支持的图片格式
+% 矢量图 .pdf .eps 
+% 位图 .jpg .png .bmp
+
+% figure环境
+% [H] 浮动优先级，当前位置，但尺寸过大的浮动体可能使得分页比较困难
+
+% [htbp!] 浮动方式 请参考一份（不太）简短的 LATEX 2" 介绍，3.9节
+% h 当前位置（代码所处的上下文）
+% t 顶部
+% b 底部
+% p 单独成页
+% ! 在决定位置时忽视限制
+% 排版位置的选取与参数里符号的顺序无关， 
+% LATEX 总是以 h-t-b-p 的优先级顺序决定浮动体位置。
+% 也就是说 [!htp] 和 [ph!t] 没有区别。
+
+\begin{figure}[H]
+	% 居中
+	\centering 
+	% width=.5\textwidth 文档宽度的0.5
+	% fig1图片放在img目录下，在此处引用无需img/前缀和图片格式后缀(png, jpg等)
+	\includegraphics[width=.5\textwidth]{fig1} 
+	% label紧接caption之后，用于引用
+        \bicaption{这是一个很长很长的图}{This is a long tu}
+	\label{fig:single}
+\end{figure}
+
+
+ 
+ 
+
+
+ 

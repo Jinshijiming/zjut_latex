@@ -1,0 +1,114 @@
+%-------------------------------------------------
+% FileName: declaration.tex
+% Version: 0.1
+% Date: 2023-06-25
+% Description: 声明
+% Others: 如无需要，不用修改本文件
+% History: origin
+%-------------------------------------------------
+
+% 断页
+\clearpage
+% 加入书签, bm@declarationpage要唯一
+\currentpdfbookmark{\defdeclarationpage}{bm@declarationpage}
+% 封面无页眉页脚
+\thispagestyle{empty}
+% \makedeclaration
+% 把一些格式设置的作用范围限制在{}内
+{ 
+    %原创声明
+    \vspace*{24bp}
+    \begin{center}
+      \zihao{3}\heiti\textbf{浙江工业大学学位论文原创性声明}
+    \end{center}
+    
+    \doublespacing\zihao{-4}
+    本人郑重声明：所提交的学位论文是本人在导师的指导下，独立进行研究工作所取得的研究成果。
+    除文中已经加以标注引用的内容外，本论文不包含其他个人或集体已经发表或撰写过的研究成果，
+    也不含为获得浙江工业大学或其它教育机构的学位证书而使用过的材料。
+    对本文的研究作出重要贡献的个人和集体，均已在文中以明确方式标明。
+    本人承担本声明的法律责任。
+    
+    作者签名：\hfill 日期：\fillYear 年\fillMonth 月 \hspace*{6em}
+    
+    \vspace*{24bp}
+    \begin{center}
+    \zihao{3}\heiti\textbf{学位论文版权使用授权书}
+    \end{center}
+    
+    \doublespacing\zihao{-4}
+    本学位论文作者完全了解学校有关保留、使用学位论文的规定，
+    同意学校保留并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。
+    本人授权浙江工业大学可以将本学位论文的全部或部分内容编入有关数据库进行检索，
+    可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
+    
+    \begin{table}[!h]
+      \renewcommand\arraystretch{1.5}
+      \begin{tabular}{ll}
+        \hspace{1.5em}本学位论文属于 & 1、保密$\square$，在一年解密后适用本授权书。\\
+        & 2、保密$\square$，在二年解密后适用本授权书。 \\
+        & 3、保密$\square$，在三年解密后适用本授权书。 \\
+        & 4、不保密$\square$。 \\
+        & （请在以上相应方框内打“√”） \\
+      \end{tabular}
+    \end{table}
+    
+    作者签名：\hfill 日期：\fillYear 年\fillMonth 月 \hspace*{6em}
+    
+    导师签名：\hfill 日期：\fillYear 年\fillMonth 月 \hspace*{6em}
+    
+    \clearpage%{\pagestyle{empty}}
+    \thispagestyle{empty}
+    %论文分类号
+    \begin{tabular*}{0.93\hsize}{@{\extracolsep{0.6cm}}r l c r l}   %   这里面的@什么意思
+        %\hline
+        \zihao{5}中图分类号                   & \zihao{5}TP391       &     &        \zihao{5}学校代码   &     \zihao{5}10337                           \\ %\hline
+        \zihao{5}UDC 					& \zihao{5}004.8 			& 	& 		\zihao{5}密级				&\zihao{5}公开						\\  
+        \vspace{0.5cm} %\hline
+        \zihao{5}研究生类别				& \zihao{5}\fillCultiviate  &   &     &    \\
+    \end{tabular*}	
+    {\centering
+        {
+            \includegraphics[width=15mm]{logo/zjutlogo}
+            \includegraphics[width=65mm]{logo/zjutname}
+            
+            \vspace*{0.1cm}
+            \heiti{\zihao{2}硕士学位论文}\\
+            \vspace*{2cm}
+            \zihao{3}\defTitleCn \\
+            \vspace*{0.4cm}
+            \zihao{-2}\defTitleEn \\
+        }       %\leavevmode
+        
+        \vspace*{3cm}
+    }
+    \zihao{-4}
+    
+    \begin{tabular*}{0.88\hsize}{@{\extracolsep{\fill}}l b{3.6cm} c l b{3.8cm}}   %   这里面的@什么意思
+        %\hline
+        作者姓名         & \fillAuthorCn                &    &      第一导师  &     \defSupervisor\hspace{0.2cm}\defSupervisorTitle \\
+        
+        申请学位 &  \fillAcademic 	&	&    第二导师 & 
+         \defSecondSupervisor\hspace{0.2cm}\defSecondSupervisorTitle		\\  
+        学科专业		& \fillMajor  &   &   培养单位& 计算机学院   \\
+    %\end{tabular*}	\\
+    %\begin{tabular*}{0.88\hsize}{@{\extracolsep{\fill}}l b{3.6cm} c l b{3.8cm}} 
+        研究方向 &  \fillresearchArea	&	& 		答辩委员会主席	&  \fillchairman		\\ 
+        
+    \end{tabular*}	\\
+    
+    \vspace*{3cm}
+    {\centering
+        \zihao{4}
+        {	
+            \begin{tabular*}{0.8\hsize}{@{\extracolsep{\fill}}ccc c ccc}   %   这里面的@什么意思
+                %\hline
+                \hspace{1.0cm} 答辩日期：        & \fillYear      &  年   &       \fillMonth  &     月      & \fillDay &     日\hspace{1.8cm}       \\ %\hline
+            \end{tabular*}	\\
+        }
+    }
+
+}    
+
+
+

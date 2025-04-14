@@ -1,0 +1,45 @@
+%-------------------------------------------------
+% FileName: chapt-5.tex
+% Version: 0.1
+% Date: 2023-06-25
+% Description: 第5章
+% Others: 
+% History: origin
+%------------------------------------------------- 
+
+
+% 断页
+% \clearpage
+\chapter{系统实现与测试}
+
+\section{系统实现}
+介绍主要功能模块的编程实现以及系统的部署方法。
+
+\section{系统测试}
+阐述系统的测试技术、测试过程和测试结果。
+\begin{figure}[H]
+	% 居中
+	\centering 
+	% width=.5\textwidth 文档宽度的0.5
+	% fig1图片放在img目录下，在此处引用无需img/前缀和图片格式后缀(png, jpg等)
+	\includegraphics[width=.5\textwidth]{fig1} 
+	% label紧接caption之后，用于引用
+        \bicaption{这是一个很长很长的图}{This is a long tu}
+	\label{fig:single3}
+\end{figure}
+完全手动完成的表格，如表\ref{tab:tab1}所示。
+\begin{table}[h] % htbp 浮动优先级
+	\centering  % 居中
+	% \caption{一个表格}  % 表格标题
+        \bicaption{一个表格}{a table}
+	\label{tab:tab1}  % 用于引用的label
+	% 字母的个数对应列数，|代表分割线
+	% l代表左对齐，c代表居中，r代表右对齐
+	\begin{tabular}{|c|c|c|c|}   
+		\hline  % 表格的横线 
+		1 & 2 & 3 & 4 \\  % 表格中的内容，用&分开，\\表示下一行
+		\hline 
+		0.1 & 0.2 & 0.3 & 0.4 \\
+		\hline
+	\end{tabular}
+\end{table}
