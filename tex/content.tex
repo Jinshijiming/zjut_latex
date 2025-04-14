@@ -22,13 +22,8 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{插图清单}
 % 生成图目录
-%\listoffigures
-{
-% 很弱智的，为每个图目录前加上 "图"
-\let\oldnumberline\numberline
-\renewcommand{\numberline}{\figurename~\oldnumberline}
 \listoffigures
-}
+
 
 
 % 断页
@@ -37,12 +32,7 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{附表清单}
 % 生成表目录
- %\listoftables
-{
-% 很弱智的，为每个表目录前加上 "表"
-\let\oldnumberline\numberline
-\renewcommand{\numberline}{\tablename~\oldnumberline}
-\listoftables
-}
+ \listoftables
+
 
 

@@ -16,10 +16,13 @@ oneside,   % 单面排版
 a4paper,   % A4纸
 titlepage, % 指定标题命令 \maketitle 生成单独的标题页
 UTF8,      % UTF-8编码
-linespread=1.25, % 行距1.25倍=基础行距*1.25=(字号大小*1.2)*1.25
+linespread=1.3541667, % 行距1.25倍=基础行距*1.25=(字号大小*1.2)*1.25
+%word 计算公式可以近似为 行距1.25倍=基础行距*1.25=(字号大小*1.3)*1.25
+%所以 word行距1.25倍=latex行距1.3541667倍
 zihao=-4,  % 默认字号为小4 
 ]{ctexbook}
 \RequirePackage{setspace}
+
 % 确定正文字体和行距后，行间留白的距离，需要除以2
 \newdimen\baselinegap
 \baselinegap=\baselineskip \advance\baselinegap by -\fontdimen6\font \divide\baselinegap by 2
@@ -28,7 +31,7 @@ zihao=-4,  % 默认字号为小4
 
 % 页面 需要在ctexbook后面 ---------------------------------------
 % 设置页面边距 (封面单独设置)
-\RequirePackage[a4paper, top=3.0cm,bottom=3.0cm,left=3.0cm,right=3.0cm]{geometry}
+\RequirePackage[a4paper, top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm,headsep=10pt,footskip=0.75cm]{geometry}
 
 % 字号字体 ---------------------------------------
 % 字号 \zihao{num}
@@ -146,7 +149,7 @@ zihao=-4,  % 默认字号为小4
         lotskip = {0pt},
         fixskip=true,% 用来抑制标题与正文和页眉的多余间距 默认不开启
         % 设置章节标题前的垂直间距
-        beforeskip = {16pt},
+        beforeskip = {24pt},
         % 控制章节标题与后面下方之间的距离
         afterskip = {48pt},
     },
@@ -160,6 +163,10 @@ zihao=-4,  % 默认字号为小4
     subsection = {
         % 4号，黑体，居左
         format = \zihao{-4}\heiti\raggedright, 
+        % 设置章节标题前的垂直间距
+        beforeskip = {\baselinegap},
+        % 控制章节标题与后面下方之间的距离
+        afterskip = {0pt},
     },
     subsubsection = {
         % 小4号，黑体，居左
@@ -172,173 +179,117 @@ zihao=-4,  % 默认字号为小4
 % book文档类里默认为2, subsection编号，而subsubsection不编号
 % 设置为3, 则subsubsection编号
 \setcounter{secnumdepth}{3} 
-% 目录的深度, subsection
-\setcounter{tocdepth}{2}
+% % 目录的深度, subsection
+% \setcounter{tocdepth}{2}
+\RequirePackage{titletoc}
 
-% 这个导引点加了以后，目录，图目录，表目录就不居中
-% 目录相关------
-% 确保章与页码之间也有引导点
-% \usepackage{subfigure}
-% \usepackage[subfigure]{tocloft}
-% \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\titlecontents{chapter}
+    [1em]{\heiti}
+    {\contentspush{\thecontentslabel\space}}{}
+    {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
+\titlecontents{section}
+    [2em]{}
+    {\contentspush{\thecontentslabel\space\space}}{}
+    {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
+\titlecontents{subsection}
+    [4em]{}
+    {\contentspush{\thecontentslabel\space\space}}{}
+    {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
+\titlecontents{figure}
+    [1em]% 左边距
+    {\contentsmargin[2ex]{1ex}}  % 右边处理                       
+    {\contentspush{\figurename~\thecontentslabel\quad}}{}       % 带编号的条目格式            % 无编号的条目格式
+    {\titlerule*[0.5em]{$\cdot$}\contentspage} % 页码格式
+\titlecontents{table}
+    [1em]% 左边距
+    {\contentsmargin[2ex]{1ex}}                          
+    {\contentspush{\tablename~\thecontentslabel\quad}}{}       % 带编号的条目格式
+    {\titlerule*[0.5em]{$\cdot$}\contentspage} % 页码格式
 
-%---------------------------------------------------------------------------%
-%->> Configure table of contents
-%---------------------------------------------------------------------------%
-%- the table of contents is specified by defining \l@chapter, \l@section, ...
-%- most commands are then defined with the \@dottedtocline:
-%- \@dottedtocline{⟨level⟩}{⟨indent⟩}{⟨numwidth⟩}{⟨title⟩}{⟨page⟩}
-%- ⟨level⟩    an entry is produced only if ⟨level⟩ <= value of the tocdepth counter
-%-            note, \chapter is level 0, \section is level 1, etc
-%- ⟨indent⟩   indentation from the outer left margin of the start of the contents line
-%- ⟨numwidth⟩ width of a box in which the section number is to go
-%- <title>    title
-%- <page>     page number
 
-%- 目录设置
-\def\@dotsep{1.5mu}% separation between dots in mu units
-\def\@pnumwidth{2em}% width of a box in which the page number is put
-\def\@tocrmarg{2em}% right margin for multiple line entries, \@tocrmarg ≥ \@pnumwidth
-\def\@chaptervspace{1ex}% 目录中章节标题的垂直距离
+%---------------------------------------
+% 开始导入一些功能型的包
+%---------------------------------------
+\RequirePackage{etoolbox} %方便全局设置的宏包
+\RequirePackage{graphicx}% 用于加载图片 includegraphics
+\RequirePackage{float}
+\RequirePackage[section]{placeins}% 禁止浮动体跨节
 
-%- redefine dottedtocline from classes.dtx and latex.ltx
-\renewcommand*{\@dottedtocline}[5]{% [<level>,<indent>,<numwidth>,<title>,<page>]
-    \ifnum #1>\c@tocdepth \else
-        \vskip \z@ \@plus.2\p@
-        {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
-        \parindent #2\relax\@afterindenttrue
-        \interlinepenalty\@M
-        \leavevmode \zihao{-4}
-        \@tempdima #3\relax
-        \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
-        {#4}\nobreak
-        \leaders\hbox{$\m@th\mkern \@dotsep \cdot\mkern \@dotsep$}\hfill
-        \nobreak
-        \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #5}%
-        \par\penalty\@highpenalty}%
-    \fi
-}
-%- redefine l@part from book.cls to add dotted toc line
-\renewcommand*{\l@part}[2]{% [<title>,<page>]
-    \ifnum \c@tocdepth >-2\relax
-        \addpenalty{-\@highpenalty}%
-        \addvspace{2.25em \@plus\p@}%
-        \setlength\@tempdima{3em}%
-        \begingroup
-            \parindent \z@ \rightskip \@pnumwidth
-            \parfillskip -\@pnumwidth
-            {\leavevmode
-            \zihao{-4} #1
-            \leaders\hbox{$\m@th\mkern \@dotsep \cdot\mkern \@dotsep$}% add dotted toc line
-            \hfil \hb@xt@\@pnumwidth{\hss #2}}\par
-            \nobreak
-            \global\@nobreaktrue
-            \everypar{\global\@nobreakfalse\everypar{}}%
-        \endgroup
-    \fi
-}
-%- 重定义目录章节部分，加入了引导符dotted toc line
-\renewcommand*{\l@chapter}[2]{% [<title>,<page>]
-    \ifnum \c@tocdepth >\m@ne
-        \addpenalty{-\@highpenalty}%
-        \vskip \@chaptervspace \@plus\p@
-        \setlength\@tempdima{1.5em}%
-        \begingroup
-            \parindent \z@ \rightskip \@pnumwidth
-            \parfillskip -\@pnumwidth
-            \leavevmode \zihao{-4} \heiti
-            \advance\leftskip\@tempdima
-            \hskip -\leftskip 
-            #1\nobreak
-            \leaders\hbox{$\m@th\mkern \@dotsep \cdot\mkern \@dotsep$}% add dotted toc line
-            \hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-            \penalty\@highpenalty
-        \endgroup
-    \fi
-}
-%- 重定义目录缩进
-\renewcommand*\l@section{\@dottedtocline{1}{1em}{1.8em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{2em}{2.8em}}
-\renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{3.8em}}
-\renewcommand*\l@paragraph{\@dottedtocline{4}{4em}{4.8em}}
-\renewcommand*\l@subparagraph{\@dottedtocline{5}{5em}{5.8em}}
-\renewcommand*\l@figure{\@dottedtocline{1}{1em}{1.8em}}
-\renewcommand*\l@table{\@dottedtocline{1}{1em}{1.8em}} 
+% 表格宏包
+\RequirePackage{booktabs,tabularx,multirow,longtable,makecell}
+\RequirePackage{array}
+% 题注宏包
+\RequirePackage{caption}
+\RequirePackage[list=off]{bicaption} %list=off取消bi-second添加到目录里
+
+% ulem宏包
+% 可断行下划线命令\uline
+\RequirePackage{ulem}
+\renewcommand{\uline}{\ul}
+% 颜色宏包
+\RequirePackage{color,xcolor}
 
 
 
-% 浮动体相关---------------------------------------
+
 % textfraction页面中必须用来排放文本的最小比例。缺省值为 0.2， 即一页中浮动对象所占的比例不得超过 80%。
-\renewcommand{\textfraction}{0.15} 
+\renewcommand{\textfraction}{0} 
 % topfraction页面顶部可以用来放置浮动对象的高度与整个页面高度的最 大比例。缺省值为 0.7，即放置在页顶部的浮动对象所占 的高度不得超过整个页面高度 70%。同样地，如果多个 使用了选项 t 的浮动对象的高度和超过了 整个页面高度的 60%，即使它们的数目没有超过  topnumber 的值，仍将一个也不会被放置 在页面顶部。
 \renewcommand{\topfraction}{0.85} 
 % bottomfraction页面底部可以用来放置浮动对象的高度与整个页面高度的最 大比例。缺省值为 0.3，这使得如果浮动对象的高度 不超过整个页面高度的 40%，可以允许放置在页面底部。
 \renewcommand{\bottomfraction}{0.65} 
 % 浮动页中必须由浮动对象占用的最小比例。因此 在一浮动页中空白所占的比例不会超过 1 - \floatpagefraction。缺省值为 0.5。
 \renewcommand{\floatpagefraction}{0.60}
-\setlength{\floatsep}{6pt plus 2pt minus 1pt} % 相邻两个浮动体之间的垂直距离。
-\setlength{\textfloatsep}{10pt plus 3pt minus 2pt} % 页面中最后一个 t 模式的浮动体与文本的间距；页面中第一个 b 模式的浮动体与文本的间距。
-\setlength{\intextsep}{8pt plus 2pt minus 2pt} % 页面中共 h 模式的浮动体上下与文本的间距
-% \setlength{\@fptop}{6bp plus2bp} 浮动页顶部与第一个浮动体之间的垂直距离
-% \setlength{\@fpsep}{12bp plus2bp} 浮动体之间的垂直间距
-% \setlength{\@fpbot}{6bp plus2bp} 最后一个浮动体与浮动页底部之间的垂直距离
-
-
 
 % 图，表，公式 ---------------------------------------
-% 用于加载图片 includegraphics
-\RequirePackage{graphicx}
+\graphicspath{{img/}}% 设置图片路径，加载图片可以忽略img前缀
 
-% 设置图片路径，加载图片可以忽略img前缀
-\graphicspath{{img/}}
+% 设置所有tabular环境使用5号字体
+\AtBeginEnvironment{tabular}{\zihao{5}}
+% 设置所有table环境使用5号字体
+\AtBeginEnvironment{table}{\zihao{5}}
 
-% 抑制图片表格等的浮动 
-% \begin{figure}[H] [H]表示把图片放于当前位置
-\RequirePackage{float}
-% 禁止浮动体跨节
-\RequirePackage[section]{placeins}
-
-% 表格宏包
-\RequirePackage{booktabs,tabularx,multirow,longtable,makecell}
-\RequirePackage{array}
-
-% 设置公式编号样式
-\makeatletter
-\@addtoreset{equation}{chapter}
-\makeatother
-\renewcommand\theequation{\arabic{chapter}-\arabic{equation}}
-
-% 设置图，表的 caption的属性
-\RequirePackage{caption}
-\RequirePackage[list=off]{bicaption} %list=off取消bi-second添加到目录里
-
-% 重新定义图的标题序号格式 (章号-图号)
+%-------------------------------------
+%  设置浮动体编号
 % {chapter}是章的计数器
 % {figure}是图的计数器
 % 图的标题由 \caption 命令生成
+%-------------------------------------
+% 设置公式编号样式
+\renewcommand\theequation{\arabic{chapter}-\arabic{equation}}
+% 图的编号样式 (章号-图号)
 \renewcommand\thefigure{\arabic{chapter}-\arabic{figure}}
-
-% \renewcommand\tablename{}
+% 表的编号样式
 \renewcommand\thetable{\arabic{chapter}-\arabic{table}}
 
-% 设置题注与图标的间距
-\captionsetup{skip=\baselinegap}
-% 设置浮动体标题悬挂缩进
-\captionsetup{format=hang}
-% 宋体，5号
-% 原始的word模板中图表标题的字号只有小五，似乎太小了点
-% 把它改成5号
+%-------------------------------------
+%  设置浮动体间距
+%-------------------------------------
+% 设置题注与图表的间距(aboveskip) 题注与正文的间距belowskip
+\captionsetup[table]{belowskip=9pt plus 0pt minus 6pt,aboveskip=\baselinegap}
+\captionsetup[figure]{belowskip=9pt plus 0pt minus 6pt,aboveskip=\baselinegap}
+%用来设置图与正文的间距  但是会与题注间距叠加 故而题注基准间距从12pt->9pt
+\setlength{\floatsep}{12pt plus 2pt minus 2pt} % 相邻两个浮动体之间的垂直距离。
+\setlength{\textfloatsep}{6pt plus 0pt minus 3pt} % 页面中第一个 t 模式的浮动体与文本的间距；页面中第一个 b 模式的浮动体与文本的间距。
+\setlength{\intextsep}{6pt plus 0pt minus 3pt} % 页面中共 h 模式的浮动体上下与文本的间距
+\setlength{\@fptop}{0pt plus 2pt minus 1pt} %浮动页顶部与第一个浮动体之间的垂直距离
+\setlength{\@fpsep}{0pt plus 2pt minus 1pt} %浮动体之间的垂直间距
+\setlength{\@fpbot}{0pt plus 2pt minus 1pt} %最后一个浮动体与浮动页底部之间的垂直距离
+
+%-------------------------------------
+%  设置浮动体题注格式、间隔、前缀、间隔符号设置
+%-------------------------------------
 \DeclareCaptionFont{songti}{\songti}
 \DeclareCaptionFont{zihao5}{\zihao{5}} 
-\captionsetup{font={songti, zihao5,bf}}
-% labelsep 设置编号和标题之间的符号，默认是冒号colon
-\DeclareCaptionLabelSeparator{dspace}{\space\space}
-\captionsetup{labelsep=dspace}
-
-%双题注的设置
+\DeclareCaptionLabelSeparator{dspace}{\space\space} % labelsep 设置编号和标题之间的符号，默认是冒号colon
 \DeclareBiCaptionSeparator{vspace}{\vspace{\baselinegap}}%设置双题注的垂直间隔
-\captionsetup{bi-separator=vspace}
-
+\captionsetup{
+    font={songti, zihao5,bf},
+    justification=centering, % 设置浮动体标题居中对齐
+    % format=hang,% 设置浮动体标题悬挂缩进
+    labelsep=dspace,
+    bi-separator=vspace
+    }
 
 \captionsetup[figure][bi-second]{name=Figure} %设置图的英文编号前缀
 \captionsetup[table][bi-second]{name=Table} %设置表的英文编号前缀
@@ -360,16 +311,6 @@ zihao=-4,  % 默认字号为小4
 \setlist[enumerate,3]{label=\Circled{\arabic*}}
 % 列表项之间无多余间距，列表和正文之间无多余间距
 \setlist{nosep}
-
-
-
-% 下划线 颜色 相关 ---------------------------------------
-% ulem宏包
-% 可断行下划线命令\uline
-\RequirePackage{ulem}
-
-% 颜色宏包
-\RequirePackage{color,xcolor}
 
 % 参考文献相关 ---------------------------------------
 % 载入参考文献宏包，设置引用格式
@@ -399,9 +340,27 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{newtxmath}
 \RequirePackage{esint}
 
+%-------------------------------------
+%  设置数学公式与正文间距
+%-------------------------------------
+% %使用 \g@addto@macro 修改全局设置 会导致页眉线偏移
+% \makeatletter
+% \g@addto@macro\normalsize{%
+%     \setlength\abovedisplayskip{\baselinegap}
+%     \setlength\belowdisplayskip{\baselinegap}
+%     \setlength\abovedisplayshortskip{\baselinegap}
+%     \setlength\belowdisplayshortskip{\baselinegap}
+% }
+% \makeatother
+\AtBeginDocument{
+    \setlength\abovedisplayskip{\baselinegap}
+    \setlength\belowdisplayskip{\baselinegap}
+    \setlength\abovedisplayshortskip{\baselinegap}
+    \setlength\belowdisplayshortskip{\baselinegap}
+}
 % 页眉页脚相关 ---------------------------------------
 % texdoc fancyhdr
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 
 \RequirePackage{ifthen}
 \newcommand{\myfancy}{
@@ -437,7 +396,9 @@ zihao=-4,  % 默认字号为小4
 
 
 
-%%%%%%%% ---------文档信息------------ %%%%%%%%
+%-------------------------------------
+% 以下内容：自定义函数 用来设置模板
+%-------------------------------------
 \RequirePackage{xstring}      % 正文标题中替换换行
 \RequirePackage{datetime}     % 日期
 
@@ -536,13 +497,13 @@ zihao=-4,  % 默认字号为小4
 \newcommand{\abstract}[1]{%
     % \noindent {\bfseries {[\defabstractname]}} #1}
     % 垂直空间
-    \vspace*{2ex}
+    \vspace*{1ex}
     % 摘要
     \begin{center}
         {\zihao{3}\heiti \defabstractname}
     \end{center}
     % 垂直空间
-    \vspace*{2ex}
+    \vspace*{1ex}
     
     % 摘要实际内容
     #1}
@@ -550,13 +511,13 @@ zihao=-4,  % 默认字号为小4
 \newcommand{\ABSTRACT}[1]{%
     %\noindent {\bfseries {[\defABSTRACTNAME]}} #1}
     % 垂直空间
-    \vspace*{2ex}
+    \vspace*{1ex}
     % Abstract
     \begin{center}
         {\zihao{3}\heiti \defABSTRACTNAME}
     \end{center}
     % 垂直空间
-    \vspace*{2ex}
+    \vspace*{1ex}
     
     % 摘要实际内容
     #1}
@@ -565,17 +526,12 @@ zihao=-4,  % 默认字号为小4
 \newcommand{\keywords}[1]{%
     %\vspace{\baselineskip}
     \vspace{1ex}
-    \noindent { \bfseries {\defkeywords} } #1}
+    \noindent { \heiti\bfseries {\defkeywords} } #1}
 % 英文关键词
 \newcommand{\KEYWORDS}[1]{%
     %\vspace{\baselineskip}
     \vspace{1ex}
     \noindent {\bfseries {\defKEYWORDS}} #1}
-
-
-
-% 例子相关 ---------------------------------------------
-%\RequirePackage{style/zscexample}
 
 
 
