@@ -131,7 +131,7 @@ zihao=-4,  % 默认字号为小4
 
 
 
-% 章节间距、编号、目录设置-----------------
+% 章节间距、编号-----------------
 \ctexset {
     chapter = {
         % 3号，黑体，居中
@@ -168,7 +168,7 @@ zihao=-4,  % 默认字号为小4
 }
 
 
-% 章节编号的深度
+% 目录设置------------------------------------------------
 % book文档类里默认为2, subsection编号，而subsubsection不编号
 % 设置为3, 则subsubsection编号
 \setcounter{secnumdepth}{3} 
@@ -237,7 +237,7 @@ zihao=-4,  % 默认字号为小4
         \endgroup
     \fi
 }
-%- redefine l@chapter from book.cls to add dotted toc line
+%- 重定义目录章节部分，加入了引导符dotted toc line
 \renewcommand*{\l@chapter}[2]{% [<title>,<page>]
     \ifnum \c@tocdepth >\m@ne
         \addpenalty{-\@highpenalty}%
@@ -246,9 +246,9 @@ zihao=-4,  % 默认字号为小4
         \begingroup
             \parindent \z@ \rightskip \@pnumwidth
             \parfillskip -\@pnumwidth
-            \leavevmode \zihao{-4}
+            \leavevmode \zihao{-4} \heiti
             \advance\leftskip\@tempdima
-            \hskip -\leftskip
+            \hskip -\leftskip 
             #1\nobreak
             \leaders\hbox{$\m@th\mkern \@dotsep \cdot\mkern \@dotsep$}% add dotted toc line
             \hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
@@ -256,7 +256,7 @@ zihao=-4,  % 默认字号为小4
         \endgroup
     \fi
 }
-%- redefine indentation for others
+%- 重定义目录缩进
 \renewcommand*\l@section{\@dottedtocline{1}{1em}{1.8em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{2em}{2.8em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{3.8em}}
@@ -523,7 +523,7 @@ zihao=-4,  % 默认字号为小4
 % 重新定义表目录的标题
 \renewcommand\listtablename{附表清单}
 \def\defabstractname{摘要}
-\def\defABSTRACTNAME{Abstract}
+\def\defABSTRACTNAME{ABSTRACT}
 \def\defkeywords{关键词：}
 \def\defKEYWORDS{Key Words: }
 \def\defacknowledgement{致谢}
