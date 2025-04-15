@@ -1,0 +1,60 @@
+\newcommand{\aname}{学术论文数据集}
+
+% 附录章
+% 断页
+\clearpage
+% hyperef 精确定位
+% 设置一个anchor，主要针对\addcontentsline
+% 防止目录，书签等指向错误位置 
+\phantomsection
+%增加到目录，与chapter同级别
+\addcontentsline{toc}{chapter}{\aname}
+% \chapter*{} 表示不编号，不生成目录
+% \markboth{}{} 用于页眉
+\chapter*{\aname \markboth{\aname}{}}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\setlength{\tabcolsep}{0.1cm}%设置表列间距
+\renewcommand{\arraystretch}{1.5}%设置10行距倍数
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\vspace{-24pt}
+\begin{tcolorbox}[
+    sharp corners,
+    boxrule=1pt,
+    colback=white,
+    boxsep=0pt,
+    left=0pt,right=0pt,top=0pt,bottom=0pt
+  ]
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{4cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2cm}|}
+        \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{密\quad 级*}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{中图分类号*}            & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{UDC*}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{论文资助}      \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{公开}            & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{TP391}             & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{004.8}         & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{}          \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{学位授予单位名称}      & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{学位授予单位代码}          & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{学位类型*}         & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{学位级别*}     \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{浙江工业大学}        & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{10337}             & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{工学}            & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{硕士}        \\ \hline
+        \multicolumn{1}{|>{\centering\arraybackslash}m{2cm}|}{论文题名*} & \multicolumn{6}{>{\centering\arraybackslash}m{14cm}|}{\defTitleCn}                                                                                \\ \hline
+        \multicolumn{1}{|>{\centering\arraybackslash}m{2cm}|}{关键词*}  & \multicolumn{5}{>{\centering\arraybackslash}m{12cm}|}{\defKeywords}                                                       & 论文语种*         \\ \hline
+        \multicolumn{1}{|>{\centering\arraybackslash}m{2cm}|}{并列题名*} & \multicolumn{5}{>{\centering\arraybackslash}m{12cm}|}{\defTitleEn} & 中文            \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{作者姓名*}         & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defAuthorCn}                  & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{学\quad 号*}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defAuthorNum}          \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{培养单位名称*}       & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{培养单位代码*}           & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{培养单位地址}        & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{邮政编码}      \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{浙江工业大学\defCollege}  & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{10337}             & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{杭州市潮王路18号}     & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{310032}    \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{学科专业*}         & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{研究方向*}             & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{学\quad 制*}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{学位授予年*}    \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{\defMajor}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defResearchArea}              & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{\defStudyYears}             & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defYear}      \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{论文提交日期*}       & \multicolumn{5}{>{\centering\arraybackslash}m{12cm}|}{\defYear 年\defMonth 月}                                                                                \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{导师姓名*}         & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defSupervisor}                  & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{职\quad 称*}          & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defSupervisorTitle}          \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{评阅人}           & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{答辩委员会主席*}          & \multicolumn{3}{>{\centering\arraybackslash}m{8cm}|}{答辩委员会成员}                                        \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{\defReviewer}              & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{\defChairman}                  & \multicolumn{3}{>{\centering\arraybackslash}m{8cm}|}{\defReviewerMember}                                               \\ \hline
+        \multicolumn{7}{|>{\raggedright\arraybackslash}p{16cm}|}{电子版论文提交格式：文本（√）图像（\quad）视频（\quad）音频（\quad）多媒体（\quad）其他（\quad）}                                                                          \\ \hline
+        \multicolumn{3}{|>{\centering\arraybackslash}m{6cm}|}{电子版论文出版（发布）者}                       & \multicolumn{2}{>{\centering\arraybackslash}m{6cm}|}{电子版论文出版（发布）地}                      & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{版权声明}      \\ \hline
+        \multicolumn{3}{|>{\centering\arraybackslash}m{6cm}|}{}                                   & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{}                                  & \multicolumn{2}{>{\centering\arraybackslash}m{4cm}|}{}          \\ \hline
+        \multicolumn{2}{|>{\centering\arraybackslash}m{4cm}|}{论文总页数*}        & \multicolumn{5}{>{\centering\arraybackslash}m{12cm}|}{\defPageNums}                                                                                      \\ \hline
+        \multicolumn{7}{|>{\raggedright\arraybackslash}p{16cm}|}{注：共33项，其中带*为必填数据，为22项。}                                                                                                       \\
+        \hline
+        \end{tabular}%  
+    
+    }
+    \end{tcolorbox}
+

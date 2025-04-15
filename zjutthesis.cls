@@ -181,7 +181,7 @@ zihao=-4,  % 默认字号为小4
 \setcounter{secnumdepth}{3} 
 % % 目录的深度, subsection
 % \setcounter{tocdepth}{2}
-\RequirePackage{titletoc}
+\RequirePackage{titletoc,titlesec} %不能放到前面，会影响标题设置
 
 \titlecontents{chapter}
     [1em]{\heiti}
@@ -215,9 +215,6 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{float}
 \RequirePackage[section]{placeins}% 禁止浮动体跨节
 
-% 表格宏包
-\RequirePackage{booktabs,tabularx,multirow,longtable,makecell}
-\RequirePackage{array}
 % 题注宏包
 \RequirePackage{caption}
 \RequirePackage[list=off]{bicaption} %list=off取消bi-second添加到目录里
@@ -228,7 +225,10 @@ zihao=-4,  % 默认字号为小4
 \renewcommand{\uline}{\ul}
 % 颜色宏包
 \RequirePackage{color,xcolor}
-
+% 表格宏包
+\RequirePackage{booktabs,multirow,longtable,tcolorbox}
+\RequirePackage{array}
+\usepackage{adjustbox}
 
 
 
@@ -244,9 +244,11 @@ zihao=-4,  % 默认字号为小4
 % 图，表，公式 ---------------------------------------
 \graphicspath{{img/}}% 设置图片路径，加载图片可以忽略img前缀
 
-% 设置所有tabular环境使用5号字体
-\AtBeginEnvironment{tabular}{\zihao{5}}
-% 设置所有table环境使用5号字体
+
+% 不对表格内容环境进行全局设置，否则会影响封面页的字号设置
+% \AtBeginEnvironment{tabular}{\zihao{5}}% 设置所有tabular环境使用5号字体
+
+% 设置所有table浮动体环境使用5号字体
 \AtBeginEnvironment{table}{\zihao{5}}
 
 %-------------------------------------
@@ -339,6 +341,7 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{amssymb}
 \RequirePackage{newtxmath}
 \RequirePackage{esint}
+\RequirePackage{wasysym}
 
 %-------------------------------------
 %  设置数学公式与正文间距
@@ -370,13 +373,13 @@ zihao=-4,  % 默认字号为小4
     %\fancyhead[CE]{\zihao{5}\songti{\fillType}}
     %\fancyhead[CO]{\zihao{5}\songti{\deftitle}}
 
-    \fancyhead[C]{\ifthenelse{\isodd{\value{page}}}{\zihao{5}\songti{\defTitleCn}}{\zihao{5}\songti{\fillType}}}
+    \fancyhead[C]{\ifthenelse{\isodd{\value{page}}}{\zihao{-4}\heiti{\defTitleCn}}{\zihao{-4}\heiti{\fillType}}}
     
     \fancyfoot[C]{\zihao{-5}\thepage}
     \renewcommand{\headrulewidth}{0.75pt}
     % \renewcommand{\headheight}{13pt}
     \setlength{\headwidth}{\textwidth}% 页眉宽度=正文宽度
-    \setlength{\headheight}{13pt}% 页眉高度
+    \setlength{\headheight}{15pt}% 页眉高度
 }
 
 % 自定义页眉页脚样式
@@ -402,78 +405,79 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{xstring}      % 正文标题中替换换行
 \RequirePackage{datetime}     % 日期
 
-% 中文题目
-\def\defTitleCn{}
-\newcommand{\mytitle}[1]{\def\defTitleCn{#1}}
-% 英文题目
-\def\defTitleEn{}
-\newcommand{\myTITLE}[1]{\def\defTitleEn{#1}}
+% \def\defTitleCn{} %定义一个变量
+% \newcommand{\mytitle}[1]{\def\defTitleCn{#1}} %传参给这个变量
 
-%指导老师
-%导师姓名
-\def\defSupervisor{}
-\newcommand{\supervisor}[1]{\def\defSupervisor{#1}}
-%导师职称
-\def\defSupervisorTitle{}
-\newcommand{\supervisorTitle}[1]{\def\defSupervisorTitle{#1}}
-%导师姓名(英)
-\def\defSupervisorEn{}
-\newcommand{\supervisorEn}[1]{\def\defSupervisorEn{#1}}
-%导师职称(英)
-\def\defSupervisorTitleEn{}
-\newcommand{\supervisorTitleEn}[1]{\def\defSupervisorTitleEn{#1}}
-%第二导师
-%导师姓名
-\def\defSecondSupervisor{}
-\newcommand{\Secondsupervisor}[1]{\def\defSecondSupervisor{#1}}
-%导师职称
-\def\defSecondSupervisorTitle{}
-\newcommand{\SecondsupervisorTitle}[1]{\def\defSecondSupervisorTitle{#1}}
-%导师姓名(英)
-\def\defSecondSupervisorEn{}
-\newcommand{\SecondsupervisorEn}[1]{\def\defSecondSupervisorEn{#1}}
-%导师职称(英)
-\def\defSecondSupervisorTitleEn{}
-\newcommand{\SecondsupervisorTitleEn}[1]{\def\defSecondSupervisorTitleEn{#1}}
-
+% \def\defFillAuthorCn{}
+% \newcommand{\fillAuthorCn}[1]{\def\fillAuthorCn{#1}}}% 这样写会自我覆盖，没有用到变量，只能传参一次
 
 %普通的 \newcommand 定义的命令在某些环境（比如 \section{}、\caption{} 或 PDF 书签）中可能失效或报错。
 \DeclareRobustCommand{\fillType}{浙江工业大学硕士学位论文}
 \DeclareRobustCommand{\zjutType}[1]{\renewcommand{\fillType}{#1}}
 
+\def\defTitleCn{}% 中文题目
+\newcommand{\fillmytitle}[1]{\def\defTitleCn{#1}}
+\def\defTitleEn{}% 英文题目
+\newcommand{\fillmyTITLE}[1]{\def\defTitleEn{#1}}
+\def\defKeywords{}% 关键词
+\newcommand{\fillKeywords}[1]{\def\defKeywords{#1}}
+\def\defPageNums{}% 总页数
+\newcommand{\fillPageNums}[1]{\def\defPageNums{#1}}
 
-\def\defFillAuthorCn{}
-\newcommand{\fillAuthorCn}[1]{\def\fillAuthorCn{#1}}
+%指导老师
+\def\defSupervisor{}%导师姓名
+\newcommand{\fillsupervisor}[1]{\def\defSupervisor{#1}}
+\def\defSupervisorTitle{}%导师职称
+\newcommand{\fillsupervisorTitle}[1]{\def\defSupervisorTitle{#1}}
+\def\defSupervisorEn{}%导师姓名(英)
+\newcommand{\fillsupervisorEn}[1]{\def\defSupervisorEn{#1}}
+\def\defSupervisorTitleEn{}%导师职称(英)
+\newcommand{\fillsupervisorTitleEn}[1]{\def\defSupervisorTitleEn{#1}}
+%第二导师
+\def\defSecondSupervisor{}%导师姓名
+\newcommand{\fillSecondsupervisor}[1]{\def\defSecondSupervisor{#1}}
+\def\defSecondSupervisorTitle{}%导师职称
+\newcommand{\fillSecondsupervisorTitle}[1]{\def\defSecondSupervisorTitle{#1}}
+\def\defSecondSupervisorEn{}%导师姓名(英)
+\newcommand{\fillSecondsupervisorEn}[1]{\def\defSecondSupervisorEn{#1}}
+\def\defSecondSupervisorTitleEn{}%导师职称(英)
+\newcommand{\fillSecondsupervisorTitleEn}[1]{\def\defSecondSupervisorTitleEn{#1}}
 
-\def\defFillAuthorEn{}
-\newcommand{\fillAuthorEn}[1]{\def\fillAuthorEn{#1}}
+\def\defChairman{}%答辩主席
+\newcommand{\fillchairman}[1]{\def\defChairman{#1}}
+\def\defReviewer{}%评阅人
+\newcommand{\fillReviewer}[1]{\def\defReviewer{#1}}
+\def\defReviewerMember{}%答辩委员会成员
+\newcommand{\fillReviewerMember}[1]{\def\defReviewerMember{#1}}
 
-\def\defFillMajor{}
-\newcommand{\fillMajor}[1]{\def\fillMajor{#1}}
+\def\defAuthorCn{}%作者中文名
+\newcommand{\fillAuthorCn}[1]{\def\defAuthorCn{#1}}
+\def\defAuthorEn{}%作者英文名
+\newcommand{\fillAuthorEn}[1]{\def\defAuthorEn{#1}}
+\def\defAuthorNum{}%学号
+\newcommand{\fillAuthorNum}[1]{\def\defAuthorNum{#1}}
 
-\def\defFillAcademic{}
-\newcommand{\fillAcademic}[1]{\def\fillAcademic{#1}}
 
-\def\defFillCultiviate{}
-\newcommand{\fillCultiviate}[1]{\def\fillCultiviate{#1}}
+\def\defStudyYears{}%专业
+\newcommand{\fillStudyYears}[1]{\def\defStudyYears{#1}}
+\def\defMajor{}%专业
+\newcommand{\fillMajor}[1]{\def\defMajor{#1}}
+\def\defAcademic{}%学位类型
+\newcommand{\fillAcademic}[1]{\def\defAcademic{#1}}
+\def\defCultiviate{}%研究生类别
+\newcommand{\fillCultiviate}[1]{\def\defCultiviate{#1}}
+\def\defCollege{}%学院
+\newcommand{\fillCollege}[1]{\def\defCollege{#1}}
+\def\defResearchArea{}%研究领域
+\newcommand{\fillresearchArea}[1]{\def\defResearchArea{#1}}
 
-\def\defFillCollege{}
-\newcommand{\fillCollege}[1]{\def\fillCollege{#1}}
+\def\defYear{}
+\newcommand{\fillYear}[1]{\def\defYear{#1}}
+\def\defMonth{}
+\newcommand{\fillMonth}[1]{\def\defMonth{#1}}
+\def\defDay{}
+\newcommand{\fillDay}[1]{\def\defDay{#1}}
 
-\def\defFillresearchArea{}
-\newcommand{\fillresearchArea}[1]{\def\fillresearchArea{#1}}
-
-\def\defFillchairman{}
-\newcommand{\fillchairman}[1]{\def\fillchairman{#1}}
-
-\def\defFillYear{}
-\newcommand{\fillYear}[1]{\def\fillYear{#1}}
-
-\def\defFillMonth{}
-\newcommand{\fillMonth}[1]{\def\fillMonth{#1}}
-
-\def\defFillDay{}
-\newcommand{\fillDay}[1]{\def\fillDay{#1}}
 
 % \def\defvalueschool{浙江工业大学计算机科学与技术学院}
 

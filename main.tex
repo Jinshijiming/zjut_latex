@@ -9,11 +9,46 @@
 \documentclass{zjutthesis} % 自定义thesis
 
 
+\fillmytitle{基于图映射的电磁信号分类方法研究} % 论文题目
+\fillmyTITLE{Research on Electromagnetic Signal Classification Method Based on Graph Mapping}% 英文题目
+\fillKeywords{调制识别，目标识别，谐波雷达，图映射算法，对比学习 }%关键词
+\fillPageNums{60}%论文总页数
+
+%--------------------------------
+% 盲审时需要注释掉的的信息
+%--------------------------------
+\fillAuthorCn{白松航} %作者姓名
+\fillAuthorNum{221122030217}%学号
+\fillsupervisor{翔云} %指导教师姓名
+\fillsupervisorTitle{讲师} %指导教师职称
+\fillSecondsupervisor{宣琦} %第二导师姓名
+\fillSecondsupervisorTitle{教授} %第二导师职称
+\fillAuthorEn{Songhang Bai} %第二页by后的姓名
+\fillsupervisorEn{Xiang Yun} %第二页的指导老师姓名
+\fillsupervisorTitleEn{Lect.} %第二页的指导老师职称
+\fillSecondsupervisorEn{Xuan Qi} %第二页的指导老师姓名
+\fillSecondsupervisorTitleEn{Prof.} %第二页的指导老师职称
+
+\fillStudyYears{3}%学制几年
+\fillMajor{控制工程}  %学科专业
+\fillAcademic{工学硕士} %学位类型
+\fillCultiviate{全日制专业型硕士研究生} %研究生类别
+\fillCollege{信息工程学院} %所在学院
+\fillresearchArea{信号识别} %研究方向
+
+\fillYear{2025}
+\fillMonth{06}
+\fillDay{07}
+
+\fillchairman{王德发}%答辩主席的名字
+\fillReviewer{王德发}%评阅人
+\fillReviewerMember{张三、李四}%答辩委员会成员
+
 
 \begin{document} 
-    \input{tex/frontinfo.tex}       % 封面 需要填写一些信息
+    \cite{chen2005laser}
+    \input{tex/frontinfo.tex}       % 封面 （模板根据以上填写的信息生成，不用修改）
     \input{tex/declaration.tex}     % 声明 （不用修改）
-
     \input{tex/abstract-ch.tex}     % 中文摘要
     \input{tex/abstract-en.tex}     % 英文摘要
     \input{tex/content.tex}         % 目录 (如无需要，不用修改)
@@ -22,8 +57,9 @@
     \input{tex/chap-3.tex}          % 增加新章节到tex目录，此处input
     \input{tex/chap-4.tex} 
     \input{tex/chap-5.tex}
-    \input{tex/chap-6.tex}          % 第6章
+    \input{tex/chap-6.tex}          
     \input{tex/reference.tex}       % 参考文献 (修改bib/ref.bib)
     \input{tex/acknowledgement.tex} % 致谢
     \input{tex/appendix.tex}        % 作者简介
+    \input{tex/thesis-dataset.tex}  % 学位论文数据集 （不用修改）
 \end{document}

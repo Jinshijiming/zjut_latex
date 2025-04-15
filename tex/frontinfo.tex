@@ -1,45 +1,3 @@
-%-------------------------------------------------
-% FileName: frontinfo.tex
-% Version: 0.1
-% Date: 2023-06-25
-% Description: 封面
-% Others: 
-% History: origin
-%------------------------------------------------- 
-
-% 根据个人信息修改{}中的内容------------------------
-
-\mytitle{基于图映射的电磁信号分类方法研究} % 论文题目
-\myTITLE{Research on Electromagnetic Signal Classification Method Based on Graph Mapping}% 英文题目
-\fillAuthorCn{白松航} %作者姓名
-\supervisor{翔云} %指导教师姓名
-\supervisorTitle{讲师} %指导教师职称
-\Secondsupervisor{宣琦} %第二导师姓名
-\SecondsupervisorTitle{教授} %第二导师职称
-\fillMajor{控制工程}  %学科专业
-\fillAcademic{工学硕士} %学位类型
-\fillCultiviate{全日制专业型硕士研究生} %研究生类别
-\fillCollege{信息工程学院} %所在学院
-
-\fillYear{2025}
-\fillMonth{06}
-\fillDay{07}
-
-\fillAuthorEn{Songhang Bai} %第二页by后的姓名
-\supervisorEn{Xiang Yun} %第二页的指导老师姓名
-\supervisorTitleEn{Lect.} %第二页的指导老师职称
-\SecondsupervisorEn{Xuan Qi} %第二页的指导老师姓名
-\SecondsupervisorTitleEn{Prof.} %第二页的指导老师职称
-
-\fillresearchArea{信号识别} %研究方向
-\fillchairman{}%答辩主席的名字
-
-
-% 指导单位 
-% \institute{计算机学院} 
-% 完成时间 
-%\completedate{2020年4月19日} 
-
 % 以下不用改动-------------------------------------
 % 加入书签, bm@frontpage要唯一
 \currentpdfbookmark{\deffrontpage}{bm@frontpage}
@@ -69,30 +27,31 @@
         \vspace*{3.0cm}
         
         
-        \kaiti\bfseries
-        \setlength{\tabcolsep}{10mm}{
+        \kaiti\bfseries\zihao{3}
+        \setlength{\tabcolsep}{1cm}%设置表列间距
+        % \renewcommand{\arraystretch}{1}%设置表行距倍数 
         \begin{tabular}{rc}
         
           \vspace*{0.3cm}
-          \zihao{4}作者姓名 & \zihao{4}\fillAuthorCn \\
+          \zihao{3}作者姓名 & \zihao{3}\defAuthorCn \\
           \vspace*{0.3cm}
-          \zihao{4}指导教师 & \zihao{4}\defSupervisor\qquad\defSupervisorTitle \\
+          \zihao{3}指导教师 & \zihao{3}\defSupervisor\qquad\defSupervisorTitle \\
           \vspace*{0.3cm}
-          \zihao{4}第二导师 & \zihao{4}\defSecondSupervisor\qquad\defSecondSupervisorTitle \\
+          \zihao{3}第二导师 & \zihao{3}\defSecondSupervisor\qquad\defSecondSupervisorTitle \\
           \vspace*{0.3cm}
-          \zihao{4}学科专业 & \zihao{4}\fillMajor \\
+          \zihao{3}学科专业 & \zihao{3}\defMajor \\
           \vspace*{0.3cm}
-          \zihao{4}学位类型 & \zihao{4}\fillAcademic \\
+          \zihao{3}学位类型 & \zihao{3}\defAcademic \\
           \vspace*{0.3cm}
-          \zihao{4}培养类型 & \zihao{4}\fillCultiviate \\
+          \zihao{3}培养类型 & \zihao{3}\defCultiviate \\
           \vspace*{0.3cm}
-          \zihao{4}所在学院 & \zihao{4}\fillCollege \\
+          \zihao{3}所在学院 & \zihao{3}\defCollege \\
         \end{tabular}\\
-        }
+        
         %}
         
         \vspace*{\fill}
-        {提交日期：\fillYear 年\fillMonth 月}\\
+        {提交日期：\defYear 年\defMonth 月}\\
         \vspace*{\fill}
         \end{center}
         \clearpage%{\pagestyle{empty}}
@@ -112,13 +71,17 @@
             by\\
             \fillAuthorEn\\
             \vspace*{\fill}
+            
+            \zihao{-3}
+            \setlength{\tabcolsep}{0.2cm}
+            % \renewcommand{\arraystretch}{1.5} 
             \begin{tabular}{rl}
-                Dissertation Supervisor:&\quad\defSupervisorTitleEn\,\defSupervisorEn\\
-            Associate Supervisor:&\quad\defSecondSupervisorTitleEn\,\defSecondSupervisorEn\\
+              \zihao{-3}Dissertation Supervisor:&\zihao{-3}\defSupervisorTitleEn\,\defSupervisorEn\\
+              \zihao{-3}Associate Supervisor:&\zihao{-3}\defSecondSupervisorTitleEn\,\defSecondSupervisorEn\\
             \end{tabular}
             
             \vspace*{\fill}
-            \monthname, \fillYear\\
+            \monthname, \defYear\\
             \vspace*{\fill}
         \end{center}
         \clearpage%{\pagestyle{empty}}
