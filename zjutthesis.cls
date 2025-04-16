@@ -55,6 +55,8 @@ zihao=-4,  % 默认字号为小4
 % \crefname{equation}{式}{式}
 % \renewcommand{\eqref}[1]{\labelcref{#1}~\namecref{#1}}
 
+
+
 % 设置字体  会影响到所有的内容
 % texdoc xeCJK
 % SimSun KaiTi 通过查找系统字体得到  
@@ -62,75 +64,27 @@ zihao=-4,  % 默认字号为小4
 % AutoFakeBold 当没有声明对应的粗体时，是否使用伪粗体
 % \setCJKmainfont[AutoFakeBold=true]{SimSun}  % overleaf 下错误
 % \setCJKmainfont[AutoFakeBold=true]{fonts/simsun.ttc}
-
-\RequirePackage{fontspec}
-
-% 西文字体设置---------------
-\setmainfont[NFSSFamily=entextrm]{XITS}[
-    Extension      = .otf,
-    UprightFont    = *-Regular,
-    BoldFont       = *-Bold,
-    ItalicFont     = *-Italic,
-    BoldItalicFont = *-BoldItalic,
-    Ligatures=TeX,
-]
-\setsansfont[NFSSFamily=entextsf]{XITS}[
-    Extension      = .otf,
-    UprightFont    = *-Regular,
-    BoldFont       = *-Bold,
-    ItalicFont     = *-Italic,
-    BoldItalicFont = *-BoldItalic,
-    Ligatures=TeX,
-]
-\setmonofont[NFSSFamily=entexttt]{XITS}[
-    Extension      = .otf,
-    UprightFont    = *-Regular,
-    BoldFont       = *-Bold,
-    ItalicFont     = *-Italic,
-    BoldItalicFont = *-BoldItalic,
-    Ligatures=TeX,
-]
-
-
-% 中文字体设置----------------------
-% 简体和繁体同时支持需要自己装字体如：Noto Serif CJK SC
-% 判断当前所处的操作系统
-\RequirePackage{ifplatform}
-
-% windows
-\ifwindows   
-    \setCJKmainfont{SimSun}[AutoFakeBold=2.5,ItalicFont=KaiTi]%
-    \setCJKsansfont{SimHei}[AutoFakeBold=2.5]%
-    \setCJKmonofont{FangSong}%
-    \newCJKfontfamily[myzhkai]\kaiti{KaiTi}[AutoFakeBold=2.5,AutoFakeSlant] %改用\kaiti命令
-\fi
-
-% linux
-\iflinux
-    \newCJKfontfamily[zhkai]\kaiti{FandolKai-Regular}[AutoFakeBold=2.5,AutoFakeSlant,Extension=.otf] %改用\kaiti命令
-\fi
-
-% macosx
-\ifmacosx
-    
-    \setCJKmainfont{mySongti SC}[%
-        UprightFont    = * Light,
-        BoldFont       = * Bold,
-        ItalicFont     = Kaiti SC,
-        BoldItalicFont = Kaiti SC Bold,
-    ]
-    \setCJKsansfont{myHeiti SC}[BoldFont = * Medium]%
-    \setCJKmonofont{mySTFangsong}%
-\fi  
-
-% ctex 已经定义的字体
-% 除了在 ubuntu 字库中没有
+% \RequirePackage{fontspec}
+\RequirePackage{xdufont}
+% ctex 已经定义的字体  除了在 ubuntu 字库中没有
 % \fangsong 的定义外，所有字库都有以下四个字体命令。
 % \songti 宋体，CJK 等价命令 \CJKfamily{zhsong}。
 % \heiti 黑体，CJK 等价命令 \CJKfamily{zhhei}。
 % \fangsong 仿宋，CJK 等价命令 \CJKfamily{zhfs}。
 % \kaishu 楷书，CJK 等价命令 \CJKfamily
-% 用法：\宋体{...}
+
+\xdusetup{
+    style={
+        cjk-font        = win, %simsun.ttc、 simkai.ttf、 simhei.ttf 和 simfang.ttf
+        cjk-fake-bold   = 2, % 伪粗体粗细程度,默认为 3
+        cjk-fake-slant  = 0.2, %中文字体伪斜体倾斜程度。默认为 0.2
+        latin-font      = tacn , %gyre默认|tacn  设置英文字体 times.ttf、 timesbd.ttf、 timesi.ttf、 timesbi.ttf、 arial.ttf、 arialbd.ttf、 ariali.ttf、 arialbi.ttf、 cour.ttf、 courbd.ttf、 couri.ttf 和 courbi.ttf
+        math-font       = termes, %termes
+        font-type       = file, % font使用系统字体|file使用指定路径
+        font-path       = fonts %字体目录
+    }
+}
+
 
 
 
@@ -339,7 +293,7 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{amsfonts} 
 \RequirePackage{amsthm}
 \RequirePackage{amssymb}
-\RequirePackage{newtxmath}
+% \RequirePackage{newtxmath}
 \RequirePackage{esint}
 \RequirePackage{wasysym}
 
