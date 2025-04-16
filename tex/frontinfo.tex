@@ -27,7 +27,7 @@
         \vspace*{3.0cm}
         
         
-        \kaiti\bfseries\zihao{3}
+        \kaishu\zihao{3}\bfseries
         \setlength{\tabcolsep}{1cm}%设置表列间距
         % \renewcommand{\arraystretch}{1}%设置表行距倍数 
         \begin{tabular}{rc}
@@ -54,12 +54,15 @@
         {提交日期：\defYear 年\defMonth 月}\\
         \vspace*{\fill}
         \end{center}
+
+
         \clearpage%{\pagestyle{empty}}
         \thispagestyle{empty}
     %英文封面
         \begin{center}
-            \vspace*{1cm}
-            {\zihao{1}\sffamily\defTitleEn}\\
+            % \vspace*{1cm}
+            \zihao{1}   \defTitleEn\\
+
             \vspace*{0.5cm}
             \zihao{3}
             Dissertation Submitted to\\
@@ -76,8 +79,8 @@
             \setlength{\tabcolsep}{0.2cm}
             % \renewcommand{\arraystretch}{1.5} 
             \begin{tabular}{rl}
-              \zihao{-3}Dissertation Supervisor:&\zihao{-3}\defSupervisorTitleEn\,\defSupervisorEn\\
-              \zihao{-3}Associate Supervisor:&\zihao{-3}\defSecondSupervisorTitleEn\,\defSecondSupervisorEn\\
+              Dissertation Supervisor:&\defSupervisorTitleEn\,\defSupervisorEn\\
+              Associate Supervisor:&\defSecondSupervisorTitleEn\,\defSecondSupervisorEn\\
             \end{tabular}
             
             \vspace*{\fill}
