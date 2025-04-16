@@ -203,7 +203,12 @@ zihao=-4,  % 默认字号为小4
 % \AtBeginEnvironment{tabular}{\zihao{5}}% 设置所有tabular环境使用5号字体
 
 % 设置所有table浮动体环境使用5号字体
-\AtBeginEnvironment{table}{\zihao{5}}
+% \AtBeginEnvironment{table}{\zihao{5}} 必须将字号命令写在begin之后，atbegin不能实现
+\let\oldtable\table  %保存原始的 \table 环境
+\let\endoldtable\endtable
+\renewenvironment{table}[1][]  % 重新定义 \table 环境，并保持可选参数
+  {\oldtable[#1]\zihao{5}}  % 使用可选参数 [htbp] 和自定义设置
+  {\endoldtable}
 
 %-------------------------------------
 %  设置浮动体编号
