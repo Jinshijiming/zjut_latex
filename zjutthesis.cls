@@ -49,13 +49,6 @@ zihao=-4,  % 默认字号为小4
 % -5  小五  \zihao{-5}
 
 
-% \RequirePackage{cleveref}% 载入自动引用宏包
-% \crefname{figure}{图}{图}
-% \crefname{table}{表}{表}
-% \crefname{equation}{式}{式}
-% \renewcommand{\eqref}[1]{\labelcref{#1}~\namecref{#1}}
-
-
 
 % 设置字体  会影响到所有的内容
 % texdoc xeCJK
@@ -512,3 +505,18 @@ zihao=-4,  % 默认字号为小4
 % hidelinks=true 取消链接的颜色和边框
 % bookmarksnumbered=true 书签带章节号
 \usepackage[hidelinks,bookmarksnumbered=true]{hyperref}
+
+% ---------------------------------
+% 自动引用
+% 使用方法 \cref{label1,[label2,...]}
+% ----------------------------------
+\RequirePackage{cleveref}% 载入自动引用宏包
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{equation}{式}{式}
+\crefname{section}{节}{节}
+\crefname{subsection}{小节}{小节} 
+% 需要new命令，不是renew
+\newcommand{\crefpairconjunction}{和}      % 两个引用之间用“和”
+\newcommand{\crefmiddleconjunction}{，}    % 多个引用之间的中间部分
+\newcommand{\creflastconjunction}{和}      % 多个引用最后两个之间用“和”
