@@ -448,7 +448,7 @@ zihao=-4,  % 默认字号为小4
 \def\defabstractname{摘要}
 \def\defABSTRACTNAME{ABSTRACT}
 \def\defkeywords{关键词：}
-\def\defKEYWORDS{Key Words: }
+\def\defKEYWORDS{KEY WORDS: }
 \def\defacknowledgement{致谢}
 
 
@@ -488,12 +488,12 @@ zihao=-4,  % 默认字号为小4
 \newcommand{\keywords}[1]{%
     %\vspace{\baselineskip}
     \vspace{1ex}
-    \noindent { \heiti\bfseries {\defkeywords} } #1}
+    \noindent { \heiti\bfseries {\defkeywords} }#1}
 % 英文关键词
 \newcommand{\KEYWORDS}[1]{%
     %\vspace{\baselineskip}
     \vspace{1ex}
-    \noindent {\bfseries {\defKEYWORDS}} #1}
+    \noindent {\bfseries {\defKEYWORDS}}#1}
 
 
 
