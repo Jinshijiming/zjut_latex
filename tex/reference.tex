@@ -19,20 +19,23 @@
 % hyperef 精确定位
 % 设置一个anchor，主要针对\addcontentsline
 % 防止目录，书签等指向错误位置 
-\phantomsection
-
-% 增加到目录，与chapter同级别
-\addcontentsline{toc}{chapter}{\bibname}
+\phantomsection\addcontentsline{toc}{chapter}{\bibname}
 
 %------------------------------------------
 % 默认参考文献样式 plain
 % \bibliographystyle{plain}
-% gbt7714 顺序编码制
-\bibliographystyle{bib/gbt7714-numerical} 
+% gbt7714 顺序编码，双语，姓名不大写，无URL、DOI
 %------------------------------------------
+\bibliographystyle{bib/gb-t-7714-2015-numeric-bilingual-no-uppercase-no-url-doi} 
 
 % ref是BIBTEX数据库的文件名，不要带.bib 扩展名，实际文件 bib/ref.bib
-\bibliography{bib/ref}
+{
+    % singlespacing这个行距设置会设置为默认字体-4号，所以需要放到前面
+    \singlespacing\zihao{5}
+    \bibliography{bib/ref}
+}
+
+
 
 % 把所有未引用的文献也列出
 % \nocite{*} 

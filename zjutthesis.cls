@@ -126,6 +126,11 @@ zihao=-4,  % 默认字号为小4
         % 小4号，黑体，居左
         format = \zihao{-4}\heiti\raggedright,  
     },
+    appendix={
+        name={},
+        number ={},
+        numbering= true,
+    },
 }
 
 
@@ -159,6 +164,7 @@ zihao=-4,  % 默认字号为小4
     {\contentsmargin[2ex]{1ex}}                          
     {\contentspush{\tablename~\thecontentslabel\quad}}{}       % 带编号的条目格式
     {\titlerule*[0.5em]{$\cdot$}\contentspage} % 页码格式
+
 
 
 %---------------------------------------
@@ -283,12 +289,13 @@ zihao=-4,  % 默认字号为小4
 % gbt7714 格式 包含natbib，二者只要一个
 % 这个宏包有两种用法，1是宏包，2是bst
 % 没有直接使用这个宏包，而是直接使用gbt7714-numerical.bst，是为了定制“出版地不详“，参考 texdoc gbt7714
-\RequirePackage[sort&compress]{gbt7714}
+% 即使没用这个宏包提供的bst，还是需要他进行全局控制的
+\RequirePackage[sort&compress]{gbt7714} 
 % \citestyle{numbers}
 % 上角标
 \citestyle{super}
-% 参考文献页的行距
-\setlength{\bibsep}{0.5ex} 
+% 两个参考文献之间的 行距增量
+\setlength{\bibsep}{0ex} 
 
 % 源代码相关 ---------------------------------------
 \RequirePackage{zjutcode}

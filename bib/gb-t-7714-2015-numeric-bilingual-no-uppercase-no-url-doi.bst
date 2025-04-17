@@ -60,8 +60,8 @@ FUNCTION {load.config}
   #0 'show.missing.address.publisher :=
   #0 'space.before.pages :=
   #0 'only.start.page :=
-  #1 'show.url :=
-  #1 'show.doi :=
+  #0 'show.url :=
+  #0 'show.doi :=
   #0 'show.note :=
   #0 'show.english.translation :=
 }
