@@ -298,7 +298,6 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{amsfonts} 
 \RequirePackage{amsthm}
 \RequirePackage{amssymb}
-% \RequirePackage{newtxmath}
 \RequirePackage{esint}
 \RequirePackage{wasysym}
 
@@ -362,7 +361,7 @@ zihao=-4,  % 默认字号为小4
 % 以下内容：自定义函数 用来设置模板
 %-------------------------------------
 \RequirePackage{xstring}      % 正文标题中替换换行
-\RequirePackage{datetime}     % 日期
+\RequirePackage[english]{datetime2}     % 日期宏包，用来将数字转化为月份等
 
 % \def\defTitleCn{} %定义一个变量
 % \newcommand{\mytitle}[1]{\def\defTitleCn{#1}} %传参给这个变量
