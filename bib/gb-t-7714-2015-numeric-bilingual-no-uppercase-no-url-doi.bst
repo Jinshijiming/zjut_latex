@@ -1624,7 +1624,7 @@ FUNCTION {map}
 
 FUNCTION {manual} { monograph }
 
-FUNCTION {mastersthesis}
+FUNCTION {thesis}
 { "D" set.entry.mark
   monograph
 }
@@ -1639,7 +1639,8 @@ FUNCTION {online}
   electronic
 }
 
-FUNCTION {phdthesis} { mastersthesis }
+FUNCTION {masterthesis} { thesis }
+FUNCTION {phdthesis} { thesis }
 
 FUNCTION {proceedings}
 { "C" set.entry.mark
