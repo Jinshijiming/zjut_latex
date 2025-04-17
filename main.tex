@@ -28,6 +28,10 @@
 \fillsupervisorTitleEn{Lect.} %第二页的指导老师职称
 \fillSecondsupervisorEn{Xuan Qi} %第二页的指导老师姓名
 \fillSecondsupervisorTitleEn{Prof.} %第二页的指导老师职称
+\fillchairman{王德发}%答辩主席的名字
+\fillReviewer{王德发}%评阅人
+\fillReviewerMember{张三、李四}%答辩委员会成员
+%--------------------------------
 
 \fillStudyYears{3}%学制几年
 \fillMajor{控制工程}  %学科专业
@@ -36,20 +40,17 @@
 \fillCollege{信息工程学院} %所在学院
 \fillresearchArea{信号识别} %研究方向
 
-\fillYear{2025}
+\fillYear{2025} %答辩时间
 \fillMonth{06}
 \fillDay{07}
 
-\fillchairman{王德发}%答辩主席的名字
-\fillReviewer{王德发}%评阅人
-\fillReviewerMember{张三、李四}%答辩委员会成员
+
 
 
 \begin{document} 
     %--------------------------------------------
     % 友情提示：为了加快编译速度，可以注释掉一些章节。最后一起编译
     %--------------------------------------------
-    \cite{chen2005laser}
     \input{tex/frontinfo.tex}       % 封面 （模板根据以上填写的信息生成，不用修改）
     \input{tex/declaration.tex}     % 声明 （不用修改）
     \input{tex/abstract-ch.tex}     % 中文摘要
@@ -62,7 +63,7 @@
     \input{tex/chap-5.tex}
     \input{tex/chap-6.tex}          
     \input{tex/reference.tex}       % 参考文献 (修改bib/ref.bib)
-    \input{tex/acknowledgement.tex} % 致谢
-    \input{tex/appendix.tex}        % 作者简介
+    \input{tex/acknowledgement.tex} % 致谢 
+    \input{tex/appendix.tex}        % 作者简介 
     \input{tex/thesis-dataset.tex}  % 学位论文数据集 （不用修改）
 \end{document}
