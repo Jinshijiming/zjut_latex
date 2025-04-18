@@ -300,7 +300,7 @@ zihao=-4,  % 默认字号为小4
 \RequirePackage{amssymb}
 \RequirePackage{esint}
 \RequirePackage{wasysym}
-
+\RequirePackage{anyfontsize} %可以消除字体特定大小限制，允许使用任意大小的字体
 %-------------------------------------
 %  设置数学公式与正文间距
 %-------------------------------------
