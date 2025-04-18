@@ -246,11 +246,12 @@ zihao=-4,  % 默认字号为小4
 %  设置浮动体题注格式、间隔、前缀、间隔符号设置
 %-------------------------------------
 \DeclareCaptionFont{songti}{\songti}
-\DeclareCaptionFont{zihao5}{\zihao{5}} 
+\DeclareCaptionFormat{stretchcaption}{\setstretch{1.3}\zihao{5}#1#2#3} % 设置题注内容换行后的行间距以及字号
 \DeclareCaptionLabelSeparator{dspace}{\space\space} % labelsep 设置编号和标题之间的符号，默认是冒号colon
 \DeclareBiCaptionSeparator{vspace}{\vspace{\baselinegap}}%设置双题注的垂直间隔
 \captionsetup{
-    font={songti, zihao5,bf},
+    format=stretchcaption,
+    font={songti,bf},
     justification=centering, % 设置浮动体标题居中对齐
     % format=hang,% 设置浮动体标题悬挂缩进
     labelsep=dspace,
