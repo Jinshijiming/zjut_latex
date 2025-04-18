@@ -33,7 +33,7 @@ zihao=-4,  % 默认字号为小4
 \hyphenpenalty=10000          % 不希望断词
 % \exhyphenpenalty=10000      %控制带有连字符（-）的位置是否允许断行
 % \sloppy                     % 允许很松的行间距
-\emergencystretch=3em         % 有问题时缓解换行压力
+\emergencystretch=3ex         % 有问题时缓解换行压力
 \frenchspacing                % 避免英文句号后大空格
 
 % 页面 需要在ctexbook后面 ---------------------------------------
@@ -142,28 +142,29 @@ zihao=-4,  % 默认字号为小4
 % \setcounter{tocdepth}{2}
 \RequirePackage{titletoc,titlesec} %不能放到前面，会影响标题设置
 
+%\thecontentspage \contentspage 会造成右边距不一样
 \titlecontents{chapter}
-    [1em]{\heiti}
+    [1em]{\heiti\contentsmargin{1ex}}
     {\contentspush{\thecontentslabel\space}}{}
     {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
 \titlecontents{section}
-    [2em]{}
+    [2em]{\contentsmargin{1ex}}
     {\contentspush{\thecontentslabel\space\space}}{}
     {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
 \titlecontents{subsection}
-    [4em]{}
+    [4em]{\contentsmargin{1ex}}
     {\contentspush{\thecontentslabel\space\space}}{}
     {\titlerule*[0.5em]{$\cdot$}\thecontentspage}
 \titlecontents{figure}
     [1em]% 左边距
-    {\contentsmargin[2ex]{1ex}}  % 右边处理                       
-    {\contentspush{\figurename~\thecontentslabel\quad}}{}       % 带编号的条目格式            % 无编号的条目格式
-    {\titlerule*[0.5em]{$\cdot$}\contentspage} % 页码格式
+    {\contentsmargin[4ex]{1ex}}  % 右边处理                       
+    {\contentspush{\figurename~\thecontentslabel\space\space}}{}       % 带编号的条目格式            % 无编号的条目格式
+    {\titlerule*[0.5em]{$\cdot$}\thecontentspage} % 页码格式
 \titlecontents{table}
     [1em]% 左边距
-    {\contentsmargin[2ex]{1ex}}                          
+    {\contentsmargin[4ex]{1ex}}                          
     {\contentspush{\tablename~\thecontentslabel\quad}}{}       % 带编号的条目格式
-    {\titlerule*[0.5em]{$\cdot$}\contentspage} % 页码格式
+    {\titlerule*[0.5em]{$\cdot$}\thecontentspage} % 页码格式   
 
 
 
@@ -188,8 +189,6 @@ zihao=-4,  % 默认字号为小4
 % 表格宏包
 \RequirePackage{booktabs,multirow,longtable,tcolorbox}
 \RequirePackage{array}
-\usepackage{adjustbox}
-
 
 
 % textfraction页面中必须用来排放文本的最小比例。缺省值为 0.2， 即一页中浮动对象所占的比例不得超过 80%。
