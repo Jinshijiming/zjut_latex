@@ -248,14 +248,14 @@ zihao=-4,  % 默认字号为小4
 \DeclareCaptionFont{songti}{\songti}
 \DeclareCaptionFormat{stretchcaption}{\setstretch{1.3}\zihao{5}#1#2#3} % 设置题注内容换行后的行间距以及字号
 \DeclareCaptionLabelSeparator{dspace}{\space\space} % labelsep 设置编号和标题之间的符号，默认是冒号colon
-\DeclareBiCaptionSeparator{vspace}{\vspace{\baselinegap}}%设置双题注的垂直间隔
+% \DeclareBiCaptionSeparator{vspace}{\vspace{\baselinegap}}%设置双题注的垂直间隔（设置了行间距可以废弃）
 \captionsetup{
     format=stretchcaption,
     font={songti,bf},
     justification=centering, % 设置浮动体标题居中对齐
     % format=hang,% 设置浮动体标题悬挂缩进
     labelsep=dspace,
-    bi-separator=vspace
+    % bi-separator=vspace
     }
 
 \captionsetup[figure][bi-second]{name=Figure} %设置图的英文编号前缀
