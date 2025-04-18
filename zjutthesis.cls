@@ -27,7 +27,14 @@ zihao=-4,  % 默认字号为小4
 \newdimen\baselinegap
 \baselinegap=\baselineskip \advance\baselinegap by -\fontdimen6\font \divide\baselinegap by 2
 
-
+% ------------------------------
+% 英文排版设置
+% ------------------------------
+\hyphenpenalty=10000          % 不希望断词
+% \exhyphenpenalty=10000      %控制带有连字符（-）的位置是否允许断行
+% \sloppy                     % 允许很松的行间距
+\emergencystretch=3em         % 有问题时缓解换行压力
+\frenchspacing                % 避免英文句号后大空格
 
 % 页面 需要在ctexbook后面 ---------------------------------------
 % 设置页面边距 (封面单独设置)
