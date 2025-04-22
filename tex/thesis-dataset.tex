@@ -15,7 +15,7 @@
 
 %特别定义微软雅黑字体，需要字体文件
 \setCJKfamilyfont{zhyahei}{MSYH}[Path=fonts/,BoldFont = *BD,Extension = .TTC]
-\RenewDocumentCommand \yahei{}{\CJKfamily{zhyahei}}
+\ProvideDocumentCommand \yahei{}{\CJKfamily{zhyahei}}
 {
   \setlength{\tabcolsep}{0.1cm}%设置表列间距
   \renewcommand{\arraystretch}{1.5}%设置10行距倍数
