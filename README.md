@@ -14,7 +14,23 @@
 2. 上传fonts
 3. 选择编译器为xelatex
 
+懒人食用已上传好的模板（可能不是最新的）：https://cn.overleaf.com/read/hnnmfxmsdmpt#9d9930
+
 ### 本地tex环境
 
 clone下来直接使用即可
+
+## 特殊的latex语法
+
+### 图表题注
+
+```
+\bicaption{中文题注}{英文题注}
+```
+
+### clever交叉引用
+
+```
+\cref{图、表、公式的label}
+```
 
