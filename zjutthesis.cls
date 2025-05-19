@@ -429,20 +429,28 @@ zihao=-4,  % 默认字号为小4
 \newcommand{\fillMajor}[1]{\def\defMajor{#1}}
 \def\defAcademic{}%学位类型
 \newcommand{\fillAcademic}[1]{\def\defAcademic{#1}}
+\def\defDegree{}%学位级别
+\newcommand{\fillDegree}[1]{\def\defDegree{#1}}
 \def\defCultiviate{}%研究生类别
 \newcommand{\fillCultiviate}[1]{\def\defCultiviate{#1}}
 \def\defCollege{}%学院
 \newcommand{\fillCollege}[1]{\def\defCollege{#1}}
 \def\defResearchArea{}%研究领域
 \newcommand{\fillresearchArea}[1]{\def\defResearchArea{#1}}
-
-\def\defYear{}
-\newcommand{\fillYear}[1]{\def\defYear{#1}}
-\def\defMonth{}
-\newcommand{\fillMonth}[1]{\def\defMonth{#1}}
-\def\defDay{}
-\newcommand{\fillDay}[1]{\def\defDay{#1}}
-
+%答辩时间
+\def\defDefenseYear{}
+\newcommand{\fillDefenseYear}[1]{\def\defDefenseYear{#1}}
+\def\defDefenseMonth{}
+\newcommand{\fillDefenseMonth}[1]{\def\defDefenseMonth{#1}}
+\def\defDefenseDay{}
+\newcommand{\fillDefenseDay}[1]{\def\defDefenseDay{#1}}
+%提交时间
+\def\defSubmitYear{}
+\newcommand{\fillSubmitYear}[1]{\def\defSubmitYear{#1}}
+\def\defSubmitMonth{}
+\newcommand{\fillSubmitMonth}[1]{\def\defSubmitMonth{#1}}
+\def\defSubmitDay{}
+\newcommand{\fillSubmitDay}[1]{\def\defSubmitDay{#1}}
 
 % \def\defvalueschool{浙江工业大学计算机科学与技术学院}
 
