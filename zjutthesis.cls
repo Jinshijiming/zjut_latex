@@ -80,7 +80,7 @@ zihao=-4,  % 默认字号为小4
         cjk-fake-slant  = 0.2, %中文字体伪斜体倾斜程度。默认为 0.2
         latin-font      = tacn , %gyre默认|tacn  设置英文字体 times.ttf、 timesbd.ttf、 timesi.ttf、 timesbi.ttf、 arial.ttf、 arialbd.ttf、 ariali.ttf、 arialbi.ttf、 cour.ttf、 courbd.ttf、 couri.ttf 和 courbi.ttf
         math-font       = termes, %termes
-        font-type       = file, % font使用系统字体|file使用指定路径
+        font-type       = file, % font使用系统字体|file使用指定路径（已修改为仅对中文字体生效，英文字体使用系统字体）
         font-path       = fonts %字体目录
     }
 }

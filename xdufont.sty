@@ -404,44 +404,20 @@
   }
 \cs_new:Npn \__xdu_off_latin_ligatures:
   { Ligatures = CommonOff , }
+
+
+% 英文字体仅使用系统字体，不能路径指定
 \cs_new:Npn \__xdu_set_latin_main_font:nnnnn #1#2#3#4#5
   {
-    \str_if_eq:NNTF { \l__xdu_font_type_tl } { font }
-      { \setmainfont { #1 } }
-      {
-        \setmainfont { #2 }
-          [
-            \__xdu_font_path:
-            \__xdu_set_latin_font:nnn { #3 } { #4 } { #5 }
-          ]
-      }
+    \setmainfont { #1 }
   }
 \cs_new:Npn \__xdu_set_latin_sans_font:nnnnn #1#2#3#4#5
   {
-    \str_if_eq:NNTF { \l__xdu_font_type_tl } { font }
-      { \setsansfont { #1 } [ \__xdu_set_latin_sans_scale: ] }
-      {
-        \setsansfont { #2 }
-          [
-            \__xdu_font_path:
-            \__xdu_set_latin_sans_scale:
-            \__xdu_set_latin_font:nnn { #3 } { #4 } { #5 }
-          ]
-      }
+    \setsansfont { #1 } [ \__xdu_set_latin_sans_scale: ]
   }
 \cs_new:Npn \__xdu_set_latin_mono_font:nnnnn #1#2#3#4#5
   {
-    \str_if_eq:NNTF { \l__xdu_font_type_tl } { font }
-      { \setmonofont { #1 } [ \__xdu_set_latin_mono_scale: \__xdu_off_latin_ligatures: ] }
-      {
-        \setmonofont { #2 }
-          [
-            \__xdu_font_path:
-            \__xdu_set_latin_mono_scale:
-            \__xdu_off_latin_ligatures:
-            \__xdu_set_latin_font:nnn { #3 } { #4 } { #5 }
-          ]
-      }
+    \setmonofont { #1 } [ \__xdu_set_latin_mono_scale: \__xdu_off_latin_ligatures: ]
   }
 \cs_new:Npn \__xdu_set_latin_main_font:nnnn #1#2#3#4
   {
@@ -467,6 +443,7 @@
         \__xdu_set_latin_font:nnn { #2 } { #3 } { #4 }
       ]
   }
+
 \cs_new:Npn \__xdu_load_latin_font_tac:
   {
     \__xdu_set_latin_main_font:nnnnn
